@@ -33,28 +33,7 @@ public class FeedbackDAOImpl implements FeedbackDAO {
 		return false;
 	}
 
-	public Feedback getFeedbackById(int id) {
-
-		Feedback feedback = new Feedback();
-		String query = "select * from feedback where f_id= ?";
-		try {
-			Connection conn = dataSource.getConnection();
-			PreparedStatement ps = conn.prepareStatement(query);
-			ps.setInt(1, id);
-			ResultSet rs = ps.executeQuery();
-			while(rs.next()) {
-				feedback.setFeedback_id(rs.getInt(1));
-				feedback.setUser_id(rs.getInt(2));
-				feedback.setName(rs.getString(3));
-				feedback.setEmail(rs.getString(4));
-				feedback.setFeedback(rs.getString(5));
-				return feedback;
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
+	
 	public List<Feedback> findAll() {
 		List<Feedback> list = new ArrayList<Feedback>();
 		String sql = "select * from feedback";
@@ -77,24 +56,6 @@ public class FeedbackDAOImpl implements FeedbackDAO {
 			e.printStackTrace();
 		}
 		return null;
-	}
-	public boolean deleteFeedback(int id) {
-
-		String query = "delete from feedback where f_id= ?";
-		try {
-			Connection conn = dataSource.getConnection();
-			PreparedStatement ps = conn.prepareStatement(query);
-			ps.setInt(1, id);
-			int rs = ps.executeUpdate();
-			System.out.println(rs);
-			return true;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
-	public boolean updateFeedback(String s) {
-		return false;
 	}
 
 }

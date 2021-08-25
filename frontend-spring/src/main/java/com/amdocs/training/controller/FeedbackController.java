@@ -31,15 +31,12 @@ public class FeedbackController {
 		String fb = request.getParameter("feedback");
 
 		Feedback feedback = new Feedback(user_id, username, email, null, fb);
-		System.out.println("**********************"+feedback+"**********************");
 		FeedbackDAO dao = new FeedbackDAOImpl();
 		if(dao.saveFeedback(feedback)) {
-			System.out.println("Feedback From "+feedback.getUser_id()+" added in database!");
 			mv.addObject("username", feedback.getName());
 			mv.setViewName("home");
 		}
 		else {
-			System.out.println("Error while adding Feedback from "+feedback.getUser_id()+" in database!");
 			mv.setViewName("error");
 		}
 		return mv;

@@ -109,9 +109,6 @@ public class CourseController {
 		CourseDAO dao = new CourseDAOImpl();
 		if(dao.deleteCourse(course_id)) {
 			System.out.println("Course Deleted Successfully!!");
-//			mv.addObject("username", enroll.getUser_id());
-//			mv.addObject("redirect", "courses");
-//			mv.setViewName("all_courses");
 		}
 		else {
 			System.out.println("Error while deleting course");

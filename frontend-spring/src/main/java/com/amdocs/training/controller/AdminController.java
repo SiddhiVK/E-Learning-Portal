@@ -17,8 +17,6 @@ import com.amdocs.training.model.Admin;
 @Controller
 public class AdminController {
 
-//Admin Registration Controller
-
 	@GetMapping("/admin_registration")
 	public String adminsign_up() {
 		return "admin_registration";
@@ -32,14 +30,11 @@ public class AdminController {
 		String password = request.getParameter("password");
 
 		Admin admin = new Admin(null, username, email, password);
-		System.out.println("**********************"+admin+"**********************");
 		AdminDAO dao = new AdminDAOImpl();
 		if(dao.saveAdmin(admin)) {
-			System.out.println("Admin "+admin.getName()+" added in database!");
 			mv.setViewName("home");
 		}
 		else {
-			System.out.println("Error while adding Admin "+admin.getName()+" in database!");
 			mv.setViewName("error");
 		}
 		return mv;

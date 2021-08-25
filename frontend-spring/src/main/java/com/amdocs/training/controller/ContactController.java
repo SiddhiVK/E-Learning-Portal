@@ -32,16 +32,13 @@ public class ContactController {
 		String message = request.getParameter("message");
 
 		Contact contact = new Contact(user_id, username, email, phone,  message, null);
-		System.out.println("**********************"+contact+"**********************");
 		ContactDAO dao = new ContactDAOImpl();
 		if(dao.saveContact(contact)) {
 			System.out.println("Contact From "+contact.getUser_id()+" added in database!");
 			mv.addObject("username", contact.getName());
-//			mv.setViewName("all_contacts");
 			mv.setViewName("home");
 		}
 		else {
-			System.out.println("Error while adding Contact from "+contact.getUser_id()+" in database!");
 			mv.setViewName("error");
 		}
 		return mv;

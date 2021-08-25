@@ -14,14 +14,5 @@ public static void main(String[] args) {
 		else {
 			System.out.println("Error Cannot Enroll");
 		}
-		System.out.println("_______________________");
-		System.out.println(dao.findAll());
-		System.out.println("_______________________");
-		System.out.println(dao.getEnrolledCourses(101));
-		System.out.println("_______________________");
-		System.out.println(dao.getEnrolledCourses(102));
-		System.out.println("_______________________");
-		System.out.println(dao.deleteEnroll(101,2));
-		System.out.println("_______________________");
 	}
 }

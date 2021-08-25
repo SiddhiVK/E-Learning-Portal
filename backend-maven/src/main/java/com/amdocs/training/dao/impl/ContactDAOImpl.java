@@ -81,22 +81,4 @@ public class ContactDAOImpl implements ContactDAO {
 		}
 		return null;
 	}
-	public boolean deleteContact(int id) {
-
-		String query = "delete from contact where contact_id= ?";
-		try {
-			Connection conn = dataSource.getConnection();
-			PreparedStatement ps = conn.prepareStatement(query);
-			ps.setInt(1, id);
-			int rs = ps.executeUpdate();
-			System.out.println(rs);
-			return true;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
-	public boolean updateUser(String s) {
-		return false;
-	}
 }

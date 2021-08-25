@@ -34,15 +34,13 @@ public class UserController {
 		String upload_photo = request.getParameter("upload_photo");
 
 		User user = new User(null, username,phone,email,address,reg_date, password,upload_photo);
-		System.out.println("**********************"+user+"**********************");
+
 		UserDAO dao = new UserDAOImpl();
 		if(dao.saveUser(user)) {
-			System.out.println("User "+user.getUser_id()+" added in database!");
 			mv.addObject("username", user.getName());
 			mv.setViewName("user_login");
 		}
 		else {
-			System.out.println("Error while adding User "+user.getUser_id()+" in database!");
 			mv.setViewName("error");
 		}
 		return mv;
@@ -71,9 +69,6 @@ public class UserController {
 		UserDAO dao = new UserDAOImpl();
 		if(dao.deleteUser(user_id)) {
 			System.out.println("User Deleted Successfully!!");
-//			mv.addObject("username", enroll.getUser_id());
-//			mv.addObject("redirect", "courses");
-//			mv.setViewName("all_courses");
 		}
 		else {
 			System.out.println("Error while deleting user");
@@ -99,7 +94,6 @@ public class UserController {
 		String upload_photo = request.getParameter("upload_photo");
 
 		User user = new User(user_id, username,phone,email,address,null, password,upload_photo);
-		System.out.println("**********************"+user+"**********************");
 		UserDAO dao = new UserDAOImpl();
 		if(dao.updateUser(user)) {
 			System.out.println("User Updated Successfully!!");
@@ -111,31 +105,4 @@ public class UserController {
 		}
 		return mv;
 	}
-	
-//	@GetMapping("/profile")
-//	public ModelAndView user_profile(User user) {
-//		ModelAndView mv = new ModelAndView();
-//		System.out.println("UserController : "+user.getName());
-//		mv.addObject("user", user);
-//		mv.setViewName("user_dashboard");
-//		
-//		return mv;
-//	}
-
-//	@GetMapping("/user/{id}")
-//	public User getUser(@PathVariable int id) {
-//		User user = dao.getUserById(id);
-//		return user;
-//	}
-//	@GetMapping("/users")
-//	public List<User> getAllUser() {
-//		List<User> list = dao.findAll();
-//		return list;
-//	
-//	}
-//	@GetMapping("/reg")
-//	public List<User> setUser() {
-//		return list;
-//	
-//	}
 }

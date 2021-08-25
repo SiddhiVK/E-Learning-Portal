@@ -34,23 +34,20 @@ public class LoginController {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 
-		System.out.println("**********************"+username+":"+password+"**********************");
 		UserDAO dao = new UserDAOImpl();
 		User user = dao.validateUser(username, password);
 		 if (null != user) {
 			Auth auth = new Auth(user.getName(), user, "USER");
-			System.out.println("User "+user.getUser_id()+" is authenticated!");
 			mv.addObject("user", user);
 			mv.addObject("auth", auth);
 			mv.setViewName("home");
 		}
 		else {
-			System.out.println("Error while Validating User "+username+" !");
 			mv.setViewName("error");
 		}
 		return mv;
 	}
-//Admin login controller
+
 
 	@GetMapping("/admin_login")
 	public String admin_login() {
@@ -63,18 +60,15 @@ public class LoginController {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 
-		System.out.println("**********************"+username+":"+password+"**********************");
 		AdminDAO dao = new AdminDAOImpl();
 		Admin admin = dao.validateAdmin(username, password);
 		 if (null != admin) {
 			Auth auth = new Auth(admin.getName(), admin, "ADMIN");
-			System.out.println("Admin "+admin.getId()+" is authenticated!");
 			mv.addObject("admin", admin);
 			mv.addObject("auth", auth);
 			mv.setViewName("admin_home");
 		}
 		else {
-			System.out.println("Error while Validating Admin "+username+" !");
 			mv.setViewName("error");
 		}
 		return mv;

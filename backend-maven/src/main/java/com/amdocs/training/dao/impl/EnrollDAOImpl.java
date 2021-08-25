@@ -95,7 +95,4 @@ public class EnrollDAOImpl implements EnrollDAO {
 		return false;
 	}
 	
-	public boolean updateEnroll(String s) {
-		return false;
-	}
 }

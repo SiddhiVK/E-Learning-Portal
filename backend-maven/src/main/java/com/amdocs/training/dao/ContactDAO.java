@@ -10,6 +10,4 @@ public interface ContactDAO {
 	Contact getContactById(int id);
 
 	List<Contact> findAll();
-
-	boolean deleteContact(int id);
 }
